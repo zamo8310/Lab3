@@ -8,8 +8,8 @@
     <body>
         <h1> Silverjack </h1>
         <?php
+        $deck = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         $start = microtime(true);
-        $deck = range(0,51);  //creates array with values 1 to 52
         $suits = array("clubs","spades","hearts","diamonds");
         //get random number 0 to 51
         //get card until it goes past 35
@@ -23,7 +23,17 @@
             $cardArr = array();
             while($total<35)
             {
-                $temp = rand(0,51);
+                do{
+                    $bool = false;
+                    $temp = rand(0,51);
+                    if($deck[$temp] == 1)
+                    {
+                        $bool = true;
+                    } else {
+                        $deck[$temp] = 1;
+                    }
+                }while($bool);
+                
                 $cardArr[] = $temp;
                 $total = $total + ($temp%13) + 1; 
             }
