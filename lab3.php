@@ -82,58 +82,15 @@
         
         $winnerNames = $names[$winner[0]];
        
-       /* if(!isset($_SESSION[$names[$winner[$i]] ]))
-        {
-                $_SESSION[$names[$winner[$i]] ] = $winningPoints;
-        }
-        else
-        {
-                 $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
-        }*/
-        
-        
         for($i = 1 ; $i < $j; $i++)
         {
-            /*if(!isset($_SESSION[$names[$winner[$i]] ]))
-            {
-                $_SESSION[$names[$winner[$i]] ] = $winningPoints;
-            }
-            else
-            {
-                 $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
-            }
-            */
             $winnerNames .=  " And " . $names[$winner[$i]]; 
         }
         
-        
-        
         echo "<p>$winnerNames wins " . $winningPoints ." points!!</p>";
-       
-       /*
-         for($i = 0 ; $i < 4; $i++)
-        {
-            if(isset($_SESSION[$names[$winner[$i]] ]))
-            {
-                if( $_SESSION[$names[$winner[$i]]]  >= 500)
-                {
-                    echo "<p>".$names[$winner[$i]] .  "Is the Real Winner.</p>";
-                    $_SESSION = array();
-                    session_destroy();
-                }
-               echo "<p>".$names[$winner[$i]] . $_SESSION[$names[$winner[$i]] ]."</p>";
-                
-               
-            }
-            else
-            {
-              echo "<p>".$names[$winner[$i]] . 0 ."</p>";
-            }
-            */
-           
-       // }
         
-      function elapsedTime(){
+       function elapsedTime()
+       {
             global $start;
             echo "<hr>";
             $elapsedSecs = microtime(true) - $start;
@@ -148,12 +105,7 @@
             echo "Average time: " . ( $_SESSION['totalElapsedTime']  / $_SESSION['matchCount']);
      
             $_SESSION['matchCount']++;
-    } //elapsedTime
-        
-        
-        
-        //$elapsedSecs = microtime(true) - $start;
-        //echo $elapsedSecs . " secs";
+        } //elapsedTime
 
         ?>
          <?=elapsedTime()?>
