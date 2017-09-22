@@ -22,6 +22,12 @@
      
         $deck = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         $start = microtime(true);
+        if (!isset($_SESSION['matchCount'])) 
+        { //checks whether the session exists
+            $_SESSION['matchCount'] = 1;
+            $_SESSION['totalElapsedTime'] = 0;
+        }
+
         $suits = array("clubs","spades","hearts","diamonds");
         //get random number 0 to 51
         //get card until it goes past 35
@@ -84,17 +90,20 @@
         $winningPoints = ($pointTotal-($winnerAmount*$j));
         
         $winnerNames = $names[$winner[0]];
-        if(!isset($_SESSION[$names[$winner[$i]] ]))
+       
+       /* if(!isset($_SESSION[$names[$winner[$i]] ]))
         {
                 $_SESSION[$names[$winner[$i]] ] = $winningPoints;
         }
         else
         {
                  $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
-        }
+        }*/
+        
+        
         for($i = 1 ; $i < $j; $i++)
         {
-            if(!isset($_SESSION[$names[$winner[$i]] ]))
+            /*if(!isset($_SESSION[$names[$winner[$i]] ]))
             {
                 $_SESSION[$names[$winner[$i]] ] = $winningPoints;
             }
@@ -102,13 +111,15 @@
             {
                  $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
             }
+            */
             $winnerNames .=  " And " . $names[$winner[$i]]; 
         }
         
         
         
         echo "<p>$winnerNames wins " . $winningPoints ." points!!</p>";
-        
+       
+       /*
          for($i = 0 ; $i < 4; $i++)
         {
             if(isset($_SESSION[$names[$winner[$i]] ]))
@@ -116,6 +127,8 @@
                 if( $_SESSION[$names[$winner[$i]]]  >= 500)
                 {
                     echo "<p>".$names[$winner[$i]] .  "Is the Real Winner.</p>";
+                    $_SESSION = array();
+                    session_destroy();
                 }
                echo "<p>".$names[$winner[$i]] . $_SESSION[$names[$winner[$i]] ]."</p>";
                 
@@ -125,16 +138,34 @@
             {
               echo "<p>".$names[$winner[$i]] . 0 ."</p>";
             }
+            */
            
-        }
+       // }
         
-       
+      function elapsedTime(){
+            global $start;
+            echo "<hr>";
+            $elapsedSecs = microtime(true) - $start;
+            echo "This match elapsed time: " . $elapsedSecs . " secs <br /><br/>";
+
+             echo "Matches played:"  . $_SESSION['matchCount'] . "<br />";
+
+             $_SESSION['totalElapsedTime'] += $elapsedSecs;
+     
+             echo "Total elapsed time in all matches: " .  $_SESSION['totalElapsedTime'] . "<br /><br />";
+     
+            echo "Average time: " . ( $_SESSION['totalElapsedTime']  / $_SESSION['matchCount']);
+     
+            $_SESSION['matchCount']++;
+    } //elapsedTime
         
         
         
-        $elapsedSecs = microtime(true) - $start;
-        echo $elapsedSecs . " secs";
+        //$elapsedSecs = microtime(true) - $start;
+        //echo $elapsedSecs . " secs";
 
         ?>
+         <?=elapsedTime()?>
+        
     </body>
 </html>
