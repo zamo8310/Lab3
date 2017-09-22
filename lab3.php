@@ -1,4 +1,4 @@
-
+session_start(); // start session
 
 <!DOCTYPE html>
 <html>
