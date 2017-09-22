@@ -17,7 +17,8 @@
         $pointTotal = 0;
         $names = array("Bob","Gillian","William","Dylan","Ted","Mike","Norman");
         shuffle($names);
-        $winner = -1;
+        $winner = array(-1,-1,-1,-1);
+        $j = 0;
         $winnerAmount = 0;
         for($i = 0; $i < 4;$i+=1)
         {
@@ -41,8 +42,17 @@
             }
             if($total > $winnerAmount && $total <= 42)
             {
-                $winner = $i;
+                $winner = array(-1,-1,-1,-1);
+                $winner[0] = $i;
                 $winnerAmount = $total;
+                $j = 1;
+            }
+            
+            
+            else if($total == $winnerAmount)
+            {
+                $winner[$j] = $i;
+                $j++;
             }
             echo "<img class='people' src='img/$names[$i].jpg'>";
             echo "<h4>$names[$i]</h4>";
@@ -54,10 +64,17 @@
             $pointTotal = $pointTotal + $total;
             
         }
-        echo "<p>$names[$winner] wins ".($pointTotal-$winnerAmount)." points!!</p>";
+        
+        $winnerNames = $names[$winner[0]];
+        for($i = 1 ; $i < $j; $i++)
+        {
+            $winnerNames .=  " And " . $names[$winner[$i]]; 
+        }
+        
+        echo "<p>$winnerNames wins ".($pointTotal-($winnerAmount*$j))." points!!</p>";
         
         
-    
+       
         
         
         
