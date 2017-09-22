@@ -17,7 +17,7 @@ session_start(); // start session
         //get random number 0 to 51
         //get card until it goes past 35
         $pointTotal = 0;
-        $names = array("Bob","Gillian","William","Dylan","Ted","Mike","Norman");
+        $names = array("Bob","Gillian","William","Dylan");
         shuffle($names);
         $winner = array(-1,-1,-1,-1);
         $j = 0;
