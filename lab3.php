@@ -4,6 +4,7 @@
 <html>
     <head>
         <title> </title>
+        
     </head>
     <body>
         <h1> Silverjack </h1>
@@ -14,7 +15,8 @@
         //get random number 0 to 51
         //get card until it goes past 35
         $pointTotal = 0;
-        $names = array("Bob","Gillian","William","Dylan");
+        $names = array("Bob","Gillian","William","Dylan","Ted","Mike","Norman");
+        shuffle($names);
         $winner = -1;
         $winnerAmount = 0;
         for($i = 0; $i < 4;$i+=1)
@@ -42,6 +44,7 @@
                 $winner = $i;
                 $winnerAmount = $total;
             }
+            echo "<img class='people' src='img/$names[$i].jpg'>";
             echo "<h4>$names[$i]</h4>";
             for($ii = 0; $ii < count($cardArr);$ii+=1)
             {
@@ -54,9 +57,7 @@
         echo "<p>$names[$winner] wins ".($pointTotal-$winnerAmount)." points!!</p>";
         
         
-        
-        //(($card % 13) + 1)
-        //$suits[floor($card / 13)] 
+    
         
         
         
