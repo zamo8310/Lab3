@@ -4,7 +4,9 @@
 <html>
     <head>
         <title> </title>
-        
+        <style>
+            @import url("css/styles.css");
+        </style>
     </head>
     <body>
         <h1> Silverjack </h1>
@@ -54,7 +56,7 @@
                 $winner[$j] = $i;
                 $j++;
             }
-            echo "<img class='people' src='img/$names[$i].jpg'>";
+            echo "<img class='people' src='img/$names[$i].jpg' style='width:150px;height:150px;' />";
             echo "<h4>$names[$i]</h4>";
             for($ii = 0; $ii < count($cardArr);$ii+=1)
             {
