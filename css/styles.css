@@ -1,3 +1,16 @@
-.people{
-    width: 50px;
+.people {
+    display: inline-block;
+    width: 300px;
+    height: 150px;
+    
+}
+div.cards {
+    display: inline-block;
+    width: 300px;
+    height: 150px;
+}
+
+div.player {
+    margin: 20px;
+    margin-bottom: 20px;
 }

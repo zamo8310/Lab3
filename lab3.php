@@ -24,6 +24,7 @@ session_start(); // start session
         $winnerAmount = 0;
         for($i = 0; $i < 4;$i+=1)
         {
+            echo "<div class='player'>";
             $total = 0;
             $cardArr = array();
             while($total<35)
@@ -56,17 +57,22 @@ session_start(); // start session
                 $winner[$j] = $i;
                 $j++;
             }
-            echo "<img class='people' src='img/$names[$i].jpg' style='width:150px;height:150px;' />";
+            echo "<div class='people'>";
+            echo "<img src='img/$names[$i].jpg' style='width:150px;height:150px;' />";
             echo "<h4>$names[$i]</h4>";
+            echo "</div>";
+            echo "<div class='cards'>";
             for($ii = 0; $ii < count($cardArr);$ii+=1)
             {
                 echo"<img src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
             }
+            echo "</div>";
             echo "<p>$total</p>";
             $pointTotal = $pointTotal + $total;
-            
+            echo "</div>";
         }
         
+        echo "<p>$names[$winner] wins ".($pointTotal-$winnerAmount)." points!!</p>";
         $winnerNames = $names[$winner[0]];
         for($i = 1 ; $i < $j; $i++)
         {
