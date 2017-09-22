@@ -72,7 +72,6 @@ session_start(); // start session
             echo "</div>";
         }
         
-        echo "<p>$names[$winner] wins ".($pointTotal-$winnerAmount)." points!!</p>";
         $winnerNames = $names[$winner[0]];
         for($i = 1 ; $i < $j; $i++)
         {
