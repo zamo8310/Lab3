@@ -1,4 +1,11 @@
-session_start(); // start session
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +18,8 @@ session_start(); // start session
     <body>
         <h1> Silverjack </h1>
         <?php
+        session_start(); // start session
+     
         $deck = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         $start = microtime(true);
         $suits = array("clubs","spades","hearts","diamonds");
@@ -72,14 +81,52 @@ session_start(); // start session
             echo "</div>";
         }
         
+        $winningPoints = ($pointTotal-($winnerAmount*$j));
+        
         $winnerNames = $names[$winner[0]];
+        if(!isset($_SESSION[$names[$winner[$i]] ]))
+        {
+                $_SESSION[$names[$winner[$i]] ] = $winningPoints;
+        }
+        else
+        {
+                 $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
+        }
         for($i = 1 ; $i < $j; $i++)
         {
+            if(!isset($_SESSION[$names[$winner[$i]] ]))
+            {
+                $_SESSION[$names[$winner[$i]] ] = $winningPoints;
+            }
+            else
+            {
+                 $_SESSION[$names[$winner[$i]] ] = $winningPoints +  $_SESSION[$names[$winner[$i]] ];
+            }
             $winnerNames .=  " And " . $names[$winner[$i]]; 
         }
         
-        echo "<p>$winnerNames wins ".($pointTotal-($winnerAmount*$j))." points!!</p>";
         
+        
+        echo "<p>$winnerNames wins " . $winningPoints ." points!!</p>";
+        
+         for($i = 0 ; $i < 4; $i++)
+        {
+            if(isset($_SESSION[$names[$winner[$i]] ]))
+            {
+                if( $_SESSION[$names[$winner[$i]]]  >= 500)
+                {
+                    echo "<p>".$names[$winner[$i]] .  "Is the Real Winner.</p>";
+                }
+               echo "<p>".$names[$winner[$i]] . $_SESSION[$names[$winner[$i]] ]."</p>";
+                
+               
+            }
+            else
+            {
+              echo "<p>".$names[$winner[$i]] . 0 ."</p>";
+            }
+           
+        }
         
        
         
