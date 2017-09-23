@@ -13,8 +13,16 @@
     <body>
         
         <?php
+        session_start(); // start session
+     
         $deck = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         $start = microtime(true);
+        if (!isset($_SESSION['matchCount'])) 
+        { //checks whether the session exists
+            $_SESSION['matchCount'] = 1;
+            $_SESSION['totalElapsedTime'] = 0;
+        }
+
         $suits = array("clubs","spades","hearts","diamonds");
         //get random number 0 to 51
         //get card until it goes past 35
@@ -74,22 +82,37 @@
             echo "</div>";
         }
         
+        $winningPoints = ($pointTotal-($winnerAmount*$j));
+        
         $winnerNames = $names[$winner[0]];
+       
         for($i = 1 ; $i < $j; $i++)
         {
             $winnerNames .=  " And " . $names[$winner[$i]]; 
         }
         
-        echo "<p>$winnerNames wins ".($pointTotal-($winnerAmount*$j))." points!!</p>";
+        echo "<p>$winnerNames wins " . $winningPoints ." points!!</p>";
         
-        
-       
-        
-        
-        
-        $elapsedSecs = microtime(true) - $start;
-        echo $elapsedSecs . " secs";
+       function elapsedTime()
+       {
+            global $start;
+            echo "<hr>";
+            $elapsedSecs = microtime(true) - $start;
+            echo "This match elapsed time: " . $elapsedSecs . " secs <br /><br/>";
+
+             echo "Matches played:"  . $_SESSION['matchCount'] . "<br />";
+
+             $_SESSION['totalElapsedTime'] += $elapsedSecs;
+     
+             echo "Total elapsed time in all matches: " .  $_SESSION['totalElapsedTime'] . "<br /><br />";
+     
+            echo "Average time: " . ( $_SESSION['totalElapsedTime']  / $_SESSION['matchCount']);
+     
+            $_SESSION['matchCount']++;
+        } //elapsedTime
 
         ?>
+         <?=elapsedTime()?>
+        
     </body>
 </html>
