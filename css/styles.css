@@ -1,16 +1,27 @@
+header {
+    text-align: center;
+    color: #9932cc;
+    text-shadow: 1px 1px #4b0082;
+    font-family: Wendy One
+}
+body {
+    background-color: #666666;
+    color: #9932cc;
+    text-shadow: 1px 1px #4b0082;
+    font-size: 24px;
+}
 .people {
     display: inline-block;
     width: 300px;
-    height: 150px;
+    height: 180px;
     
 }
 div.cards {
     display: inline-block;
     width: 300px;
-    height: 150px;
+    height: 180px;
 }
 
 div.player {
-    margin: 20px;
-    margin-bottom: 20px;
+    margin: 50px;
 }

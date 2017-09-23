@@ -1,5 +1,3 @@
-session_start(); // start session
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,9 +5,13 @@ session_start(); // start session
         <style>
             @import url("css/styles.css");
         </style>
+        <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
     </head>
-    <body>
+    <header>
         <h1> Silverjack </h1>
+    </header>
+    <body>
+        
         <?php
         $deck = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         $start = microtime(true);
@@ -67,7 +69,7 @@ session_start(); // start session
                 echo"<img src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
             }
             echo "</div>";
-            echo "<p>$total</p>";
+            echo "<p style='margin-right:50px;'>$total</p>";
             $pointTotal = $pointTotal + $total;
             echo "</div>";
         }
