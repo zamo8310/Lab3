@@ -75,7 +75,7 @@
             echo "<div class='cards'>";
             for($ii = 0; $ii < count($cardArr);$ii+=1)
             {
-                echo"<img style='margin:1px;box-shadow:1px 1px #4b0082;' src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
+                echo"<img style='margin:1px;box-shadow:2px 2px #4b0082;' src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
             }
             echo "</div>";
             echo "<p style='margin-right:50px;margin-left:25px;'>Points: $total</p>";
