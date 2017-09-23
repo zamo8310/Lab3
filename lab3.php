@@ -5,7 +5,8 @@
         <style>
             @import url("css/styles.css");
         </style>
-        <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     </head>
     <header>
         <h1> Silverjack </h1>
@@ -68,20 +69,21 @@
                 $j++;
             }
             echo "<div class='people'>";
-            echo "<img src='img/$names[$i].jpg' style='width:150px;height:150px;' />";
-            echo "<h4>$names[$i]</h4>";
+            echo "<img src='img/$names[$i].jpg' style='border-style:solid;border-color:#4b0082;width:150px;height:150px;' />";
+            echo "<h4 style='margin-left:10px;'>$names[$i]</h4>";
             echo "</div>";
             echo "<div class='cards'>";
             for($ii = 0; $ii < count($cardArr);$ii+=1)
             {
-                echo"<img src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
+                echo"<img style='margin:1px;box-shadow:1px 1px #4b0082;' src='cards/".$suits[floor($cardArr[$ii] / 13)]."/".(($cardArr[$ii] % 13) + 1).".png' alt = '".$suits[floor($cardArr[$ii] / 13)].(($cardArr[$ii] % 13) + 1)."'>";
             }
             echo "</div>";
-            echo "<p style='margin-right:50px;'>$total</p>";
+            echo "<p style='margin-right:50px;margin-left:25px;'>Points: $total</p>";
             $pointTotal = $pointTotal + $total;
             echo "</div>";
         }
-        
+        echo "</body>";
+        echo "<footer>";
         $winningPoints = ($pointTotal-($winnerAmount*$j));
         
         $winnerNames = $names[$winner[0]];
@@ -113,6 +115,6 @@
 
         ?>
          <?=elapsedTime()?>
-        
-    </body>
+        </footer>
+    
 </html>

@@ -2,26 +2,41 @@ header {
     text-align: center;
     color: #9932cc;
     text-shadow: 1px 1px #4b0082;
-    font-family: Wendy One
+    font-family: Cinzel, serif;
+    border-style: solid;
+    border-color: #4b0082;
+    background-color: #efae92;
 }
 body {
-    background-color: #666666;
+    background-image: url("../img/royal.jpg");
     color: #9932cc;
     text-shadow: 1px 1px #4b0082;
     font-size: 24px;
+    font-family: Didact Gothic, sans-serif;
 }
 .people {
     display: inline-block;
     width: 300px;
     height: 180px;
+    margin: 10px;
     
 }
-div.cards {
+.cards {
     display: inline-block;
     width: 300px;
     height: 180px;
 }
 
-div.player {
+.player {
     margin: 50px;
+    border-style: solid;
+    border-color: #4b0082;
+    background-color: #efae92;
+}
+
+footer {
+    border-style: solid;
+    border-color: #4b0082;
+    background-color: #efae92;
+    text-align:center;
 }
